@@ -1,13 +1,20 @@
 <?php
 $response = [];
 
+function getLastElement($arr) {
+  return array_pop($arr);
+}
+
 if (isset($_GET['path'])) {
   $path = $_GET['path'];
   if (is_file($path)) {
     $textContent = file_get_contents($path);
     
-    $response['textContent'] = $textContent;
     $response['info'] = "Success";
+    $filename = getLastElement(explode('/',$path));
+    $response['filename'] = $filename;
+    $response['textContent'] = $textContent;
+    file_put_contents('./temp.txt', $textContent);
 
   } else if (is_dir($path)){
     $response['textContent'] = '';
@@ -40,7 +47,7 @@ if (isset($_POST['path'])) {
     if ($oldTextContent === $newTextContent) {
       $response['info'] = 'Nothing changed';
     } else {
-      $response['info'] = 'Success';
+      $response['info'] = 'File content updated';
       file_put_contents($path, $newTextContent);
     }
   } else {

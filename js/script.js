@@ -1,14 +1,5 @@
 const PROCESS_URL = location.href + "/process.php";
 
-// Elements
-const pathForm = document.getElementById("path-form");
-const pathInput = document.getElementById("path-input");
-const infoSpan = document.getElementById("info-span");
-const saveButton = document.getElementById("save-btn");
-const textContentForm = document.getElementById("text-content-form");
-const textContentInput = document.getElementById("text-content");
-const pathInputHidden = document.getElementById("path-hidden");
-
 pathForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   // Send Request and Update Text Content
@@ -26,15 +17,18 @@ pathForm.addEventListener("submit", async (e) => {
   }
 
   if (error) {
-    infoSpan.textContent = `Error: ${error}`;
+    infoSpan.innerHTML = `Error: ${error}`;
   } else if (info) {
     infoSpan.textContent = "Info: " + info;
     if (info === "Success") {
-      saveButton.classList.remove("disabled");
-      textContentInput.readonly = false;
+      saveButton.classList.remove("btn-disabled");
+      downloadButton.classList.remove("btn-disabled");
+      downloadButton.download = response.filename;
+      textContentInput.readOnly = false;
     } else if (info === "The Path is a directory") {
-      saveButton.classList.add("disabled");
-      textContentInput.readonly = true;
+      saveButton.classList.add("btn-disabled");
+      downloadButton.classList.add("btn-disabled");
+      textContentInput.readOnly = true;
     }
     pathInputHidden.value = path;
   }
