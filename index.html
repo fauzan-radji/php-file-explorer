@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <form id="path-form">
+        <input
+          type="text"
+          id="path-input"
+          placeholder="path to file or folder"
+        />
+        <button type="submit" class="btn">Fetch</button>
+      </form>
+    </header>
+
+    <main>
+      <section class="action">
+        <span class="info" id="info-span"></span>
+        <button id="save-btn" class="btn btn-disabled">Save</button>
+      </section>
+
+      <form id="text-content-form" enctype="multipart/form-data">
+        <input type="hidden" name="path" id="path-hidden" />
+        <textarea
+          name="text-content"
+          placeholder="File content goes here"
+          id="text-content"
+          readonly
+        ></textarea>
+      </form>
+    </main>
+
+    <script src="js/ajax.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
