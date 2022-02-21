@@ -1,0 +1,19 @@
+:root {
+  /* r ((b-r)/2+r) b */
+  --white: #cde;
+  --dark-white: #bcd;
+  --light-white: #def;
+
+  --black: #234;
+  --dark-black: #123;
+  --light-black: #345;
+  --black-alpha: #123a;
+
+  --blue: #39f;
+  --dark-blue: #147;
+  --light-blue: #7ad;
+
+  --red: #f66;
+  --yellow: #ee5;
+  --green: #6f6;
+}

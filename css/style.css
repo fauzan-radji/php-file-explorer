@@ -1,66 +1,21 @@
-body,
-body * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body,
-input,
-.btn {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
-  background-color: #222;
-  color: #fff;
-  padding: 1em;
+  background-color: var(--dark-black);
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: linear-gradient(50deg, var(--dark-black), var(--black));
+  background-attachment: fixed;
+  color: var(--light-white);
   display: flex;
   flex-direction: column;
   gap: 1em;
   height: 100vh;
 }
 
-input,
-.btn,
-textarea {
-  font-size: 1em;
-  padding: 0.6em 0.8em;
-  border: none;
-  outline: none;
-}
-
-input,
-.btn {
-  border-radius: 0.2em;
-}
-
-.btn {
-  background-color: #39f;
-  color: #fff;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.btn-secondary {
-  background-color: transparent;
-  border: 1px solid #39f;
-}
-
-.btn-disabled {
-  pointer-events: none;
-  opacity: 0.2;
-}
-
-textarea {
-  font-family: "cascadia code", "roboto mono", monospace;
-}
-
-::placeholder {
-  font-style: italic;
-}
-
 /* Layout */
+header {
+  padding: 1em;
+  padding-bottom: 0;
+}
+
 header form {
   display: flex;
   justify-content: space-between;
@@ -71,6 +26,7 @@ header form input {
   flex: auto;
 }
 
+/* Main */
 main {
   display: flex;
   flex-direction: column;
@@ -78,29 +34,45 @@ main {
   flex: auto;
 }
 
-main .action {
+.action {
   display: flex;
   gap: 1em;
+  padding: 0 1em;
   justify-content: flex-end;
   align-items: center;
 }
 
-main .action .info {
+.action .info {
   flex: auto;
-  max-height: 2em;
+  height: 2em;
   overflow: auto;
 }
 
-main form {
-  height: 100%;
+.children {
+  list-style: none;
+  --separator: 1px solid var(--light-black);
+  border-top: var(--separator);
+  border-left: var(--separator);
 }
 
-main textarea {
-  resize: none;
-  height: 100%;
+.children li {
+  border-right: var(--separator);
+  border-bottom: var(--separator);
+}
+
+.children li:hover {
+  background-color: var(--black);
+}
+
+.children li a {
+  color: var(--light-white);
+  display: block;
   width: 100%;
-  background-color: #333;
-  color: #fff;
-  line-height: 1.6;
-  font-size: 1.16em;
+  height: 100%;
+  padding: 1em;
+}
+
+.modal .actions-section {
+  display: flex;
+  gap: 1em;
 }

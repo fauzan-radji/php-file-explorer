@@ -1,0 +1,72 @@
+input,
+.btn,
+textarea {
+  font-size: 1em;
+  padding: 0.6em 0.8em;
+  border: none;
+  outline: none;
+}
+
+input,
+.btn {
+  border-radius: 0.2em;
+  font-family: inherit;
+}
+
+input {
+  background-color: var(--dark-white);
+  color: var(--dark-black);
+}
+
+.btn {
+  background-color: var(--blue);
+  color: var(--light-white);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--blue);
+}
+
+.btn-disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+textarea {
+  font-family: "cascadia code", "roboto mono", monospace;
+  font-size: 1.2em;
+  line-height: 1.8;
+  resize: none;
+  background-color: var(--dark-black);
+  width: 100%;
+  height: 100%;
+  color: var(--light-white);
+}
+
+::placeholder {
+  font-style: italic;
+  color: var(--light-black);
+}
+
+a {
+  text-decoration: none;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

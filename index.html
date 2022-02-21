@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit</title>
+    <link rel="stylesheet" href="css/colors.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/partials.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -14,6 +19,7 @@
           type="text"
           id="path-input"
           placeholder="path to file or folder"
+          value="c:/xampp/htdocs/edit"
           required
         />
         <button type="submit" class="btn">Fetch</button>
@@ -23,30 +29,64 @@
     <main>
       <section class="action">
         <span class="info" id="info-span"></span>
-        <button id="save-btn" class="btn btn-disabled">Save</button>
-        <a
-          href="temp.txt"
-          id="download-btn"
-          class="btn btn-secondary btn-disabled"
-          download="temp.txt"
-        >
-          Download
-        </a>
+        <input type="text" class="filter" placeholder="filter" />
       </section>
 
-      <form id="text-content-form" enctype="multipart/form-data">
-        <input type="hidden" name="path" id="path-hidden" />
-        <textarea
-          name="text-content"
-          placeholder="File content goes here"
-          id="text-content"
-          readonly
-        ></textarea>
-      </form>
+      <ul class="children gallery">
+        <li>
+          <a href="#" class="icon icon-directory">..</a>
+        </li>
+        <li>
+          <a href="#" class="icon icon-directory">css</a>
+        </li>
+        <li>
+          <a href="#" class="icon icon-php">file.php</a>
+        </li>
+        <li>
+          <a href="#" class="icon icon-text">file.txt</a>
+        </li>
+        <li>
+          <a href="#" class="icon icon-text no-wrap"
+            >file with a really really long long name without space.txt</a
+          >
+        </li>
+      </ul>
     </main>
 
-    <script src="js/ajax.js"></script>
+    <div id="image-modal" class="modal">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h4 class="modal__title no-wrap">
+            file with a really really long long name without space.jpg
+          </h4>
+          <button class="modal__close">&times;</button>
+        </div>
+        <div class="modal__content">
+          <img src="img/img.jpg" alt="filename.jpg" />
+        </div>
+      </div>
+    </div>
+
+    <div id="textarea-modal" class="modal">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h4 class="modal__title no-wrap">
+            file with a really really long long name without space.txt
+          </h4>
+          <button class="modal__close">&times;</button>
+        </div>
+        <div class="modal__content">
+          <textarea placeholder="Nothings here"></textarea>
+          <div class="actions-section">
+            <button class="btn btn-secondary">Reset</button>
+            <button class="btn">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="js/ajax.js"></script>
     <script src="js/elements.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js"></script> -->
   </body>
 </html>
