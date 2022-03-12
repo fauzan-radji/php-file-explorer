@@ -3,14 +3,11 @@ input,
 textarea {
   font-size: 1em;
   padding: 0.6em 0.8em;
-  border: none;
-  outline: none;
 }
 
 input,
 .btn {
   border-radius: 0.2em;
-  font-family: inherit;
 }
 
 input {

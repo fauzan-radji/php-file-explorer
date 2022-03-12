@@ -1,0 +1,142 @@
+/* variables */
+[type="range"] {
+  /* thumb */
+  --thumb-color: #555;
+  --thumb-border: none;
+  --thumb-height: 16px;
+  --thumb-width: 16px;
+  --thumb-border-radius: 5px;
+  --thumb-box-shadow: none;
+  --thumb-cursor: pointer;
+
+  /* track */
+  --track-color: #08f;
+  --track-border: none;
+  --track-height: 8px;
+  --track-width: 50%;
+  --track-border-radius: 4px;
+  --track-box-shadow: none;
+  --track-cursor: pointer;
+}
+
+/* Applying base CSS styles
+Several styles need to be applied to range inputs in all browsers to override their basic appearance. */
+
+[type="range"] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: var(--track-width); /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+[type="range"]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+[type="range"]::-ms-track {
+  width: var(--track-width);
+  cursor: var(--track-cursor);
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+/* This gives us invisible or unstyled range inputs in all browsers. Now we can apply our custom styles.
+
+Styling the Thumb
+The widget that you click or drag along the track is called the thumb. It can be styled just like a regular HTML element. */
+/* Special styling for WebKit/Blink */
+[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: var(--thumb-border);
+  height: var(--thumb-height);
+  width: var(--thumb-width);
+  border-radius: var(--thumb-border-radius);
+  background: var(--thumb-color);
+  cursor: var(--thumb-cursor);
+  /* margin-top: -14px; */
+  margin-top: calc((var(--thumb-height) / -2) + (var(--track-height) / 2));
+  /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: var(--thumb-box-shadow); /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+[type="range"]::-moz-range-thumb {
+  box-shadow: var(--thumb-box-shadow);
+  border: var(--thumb-border);
+  height: var(--thumb-height);
+  width: var(--thumb-width);
+  border-radius: var(--thumb-border-radius);
+  background: var(--thumb-color);
+  cursor: var(--thumb-cursor);
+}
+
+/* All the same stuff for IE */
+[type="range"]::-ms-thumb {
+  box-shadow: var(--thumb-box-shadow);
+  border: var(--thumb-border);
+  height: var(--thumb-height);
+  width: var(--thumb-width);
+  border-radius: var(--thumb-border-radius);
+  background: var(--thumb-color);
+  cursor: var(--thumb-cursor);
+}
+/* Note that while we’re repeating code here, that’s necessary as you can’t comma-separate these type of selectors. Browsers will drop the entire selector if it doesn’t understand a part of it.
+
+Styling the Track
+The line that the thumb moves across is called the track. It is also styled just like a regular HTML element.
+
+A note on IE: Internet Explorer 10+ has a slightly different approach to range inputs. In IE, you are allowed to specify completely different styles for the upper (right of the thumb) and lower (left of the thumb) areas of the track.
+
+Another thing to note is that you can apply focus effects to the track which change the styling when the user is interacting with the range. */
+[type="range"]::-webkit-slider-runnable-track {
+  width: var(--track-width);
+  height: var(--track-height);
+  cursor: var(--track-cursor);
+  box-shadow: var(--track-box-shadow);
+  background: var(--track-color);
+  border-radius: var(--track-border-radius);
+  border: var(--track-border);
+}
+
+[type="range"]::-moz-range-track {
+  width: var(--track-width);
+  height: var(--track-height);
+  cursor: var(--track-cursor);
+  box-shadow: var(--track-box-shadow);
+  background: var(--track-color);
+  border-radius: var(--track-border-radius);
+  border: var(--track-border);
+}
+
+[type="range"]::-ms-track {
+  width: var(--track-width);
+  height: var(--track-height);
+  cursor: var(--track-cursor);
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+}
+
+[type="range"]::-ms-fill-lower {
+  background: var(--track-color);
+  border: var(--track-border);
+  border-radius: var(--track-border-radius);
+  box-shadow: var(--track-box-shadow);
+}
+
+[type="range"]::-ms-fill-upper {
+  background: var(--track-color);
+  border: var(--track-border);
+  border-radius: var(--track-border-radius);
+  box-shadow: var(--track-box-shadow);
+}
+
+/* Browser Support
+The range input itself has browser support about like: Firefox 23+, Safari 4+, iOS 5+, Chrome 6+, Opera 11+, IE 10+, Android 4.2+. So pretty good. This custom styling stuff should largely match that if you follow the code in this article.
+If a browser doesn’t support range inputs, you’ll just get a text input, which is still functional and valid. */

@@ -16,6 +16,37 @@
 //   exit;
 // }
 
+// Zip file and send it to the browser
+function zip($root, $zipname) {
+  $zip = new ZipArchive();
+  $zip->open($zipname, ZipArchive::CREATE);
+  $files = getFiles($root);
+  foreach($files as $file) {
+    if (is_file($file)) {
+      $zip->addFile($file);
+    }
+  }
+  $zip->close();
+  return $zipname;
+}
+
+// get all files recursively
+function getFiles($dir, &$results = array()) {
+  $files = scandir($dir);
+
+  foreach ($files as $key => $value) {
+      $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
+      if (is_file($path)) {
+          $results[] = $path;
+      } else if ($value != "." && $value != "..") {
+          getFiles($path, $results);
+          $results[] = $path;
+      }
+  }
+
+  return $results;
+}
+
 function sendFile($filepath) {
   // Get file type and set it as Content Type
   $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -38,3 +69,6 @@ function sendFile($filepath) {
   readfile($filepath);
   exit;
 }
+
+
+sendFile(zip('d:\photoshop','test.zip'));

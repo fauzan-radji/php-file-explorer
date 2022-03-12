@@ -1,0 +1,201 @@
+.video-container {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  border: 1px solid var(--blue);
+}
+
+.video-container .icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 20%;
+}
+
+.video-container .button__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(1);
+  background-color: transparent;
+}
+
+.video-container main,
+.video-container .popup,
+.video-container .overlay {
+  position: absolute;
+}
+
+.video-container main {
+  top: 0;
+  left: 0;
+  bottom: 30px;
+  width: 100%;
+  z-index: 1;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.video-container .footer-overlay {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.video-container .footer-overlay > footer {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s ease;
+  transform: translateY(52px);
+}
+
+.video-container .footer-overlay:hover > footer {
+  transform: translateY(0);
+}
+
+.video-container .glass {
+  background-color: var(--black-alpha);
+  backdrop-filter: blur(10px);
+}
+
+.video-container .time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 25px;
+  padding: 0 20px;
+}
+
+.video-container .progress-bar {
+  cursor: pointer;
+  width: 100%;
+  height: 10px;
+  background-color: var(--light-white);
+}
+
+.video-container .progress-bar .filled {
+  width: 0;
+  height: 100%;
+  background-color: var(--blue);
+}
+
+.video-container .buttons {
+  height: 45px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.video-container .buttons > * {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.video-container .volume-slider {
+  margin: 0 10px;
+  --thumb-color: var(--blue);
+  --thumb-border: none;
+  --thumb-height: 15px;
+  --thumb-width: 15px;
+  --thumb-border-radius: 50%;
+  --thumb-box-shadow: none;
+  --thumb-cursor: pointer;
+  --track-color: #fff;
+  --track-border: none;
+  --track-height: 4px;
+  --track-width: 100px;
+  --track-border-radius: 2px;
+  --track-box-shadow: none;
+  --track-cursor: pointer;
+}
+
+.video-container .buttons button {
+  transition: 0.1s ease;
+}
+
+.video-container .buttons button:hover,
+.video-container .buttons button.hover {
+  background-color: var(--blue);
+}
+
+.video-container .buttons button:not(:first-child) {
+  margin-left: 1px;
+}
+
+.video-container .center {
+  justify-content: center;
+}
+
+.video-container .right {
+  justify-content: flex-end;
+}
+
+.video-container .popup {
+  right: 20px;
+  bottom: 80px;
+  border-radius: 10px;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px var(--black-alpha);
+  overflow: hidden;
+  opacity: 1;
+  /* transform: translateY(0); */
+  pointer-events: initial;
+
+  transition: 0.3s ease;
+}
+
+.video-container .popup.settings-popup {
+  width: 200px;
+  transition: 0.3s ease;
+  transform: translateY(52px);
+}
+
+.footer-overlay:hover ~ .settings-popup {
+  transform: translateY(0);
+}
+
+.settings-popup ul {
+  list-style: none;
+}
+
+.settings-popup ul input {
+  display: none;
+}
+
+.settings-popup label {
+  display: block;
+  padding: 10px 20px;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.settings-popup label:hover {
+  background-color: var(--black-alpha);
+}
+
+.settings-popup input:checked + label {
+  background-color: var(--dark-black);
+}
+
+.video-container .popup.hidden {
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+}
