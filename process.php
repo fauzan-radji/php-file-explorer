@@ -2,11 +2,13 @@
 $response = [];
 
 function getLastElement($arr) {
-  return array_pop($arr);
+  return $arr[count($arr) - 1];
 }
 
 if (isset($_GET['path'])) {
   $path = $_GET['path'];
+  $response['parent'] = dirname($path);
+
   if (is_file($path)) {
     $textContent = file_get_contents($path);
     
@@ -17,25 +19,40 @@ if (isset($_GET['path'])) {
     file_put_contents('./temp.txt', $textContent);
 
   } else if (is_dir($path)){
-    $response['textContent'] = '';
+    $response['children'] = [];
     $children = scandir($path);
     foreach($children as $child) {
       if (!str_ends_with($path, '/')) {
         $path .= '/';
       }
-      $fullPath = $path . $child;
-      if (is_dir($fullPath)) {
-        $response['textContent'] .= '<DIR>   [' . $child . ']';
+
+      if($child == '..') {
+        $fullPath = $response['parent'];
       } else {
-        $response['textContent'] .= '<FILE>  ' . $child;
+        $fullPath = $path . $child;
       }
-      $response['textContent'] .= "
-";
+      
+      if (is_dir($fullPath)) {
+        if($child == '.') continue;
+
+        $type = "directory";
+        $extension = "";
+      } else {
+        $type = "file";
+        $extension = pathinfo($child,PATHINFO_EXTENSION);
+      }
+
+      $response['children'][] = [
+        "name" => $child,
+        "type" => $type,
+        "extension" => $extension,
+        "path" => $fullPath
+      ];
     }
 
     $response['info'] = 'The Path is a directory';
   } else {
-    $response['error'] = "The file doesn't exist";
+    $response['error'] = "The file or folder doesn't exist";
   }
 }
 

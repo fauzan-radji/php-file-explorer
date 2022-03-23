@@ -1,9 +1,18 @@
 class Item {
-  constructor(type, name, contextMenu) {
+  constructor(type, name, path) {
     this.type = type;
     this.name = name;
+    this.path = path;
 
     this.build();
+
+    this.on("click", (e) => e.preventDefault());
+
+    this.on("contextmenu", (e) => {
+      e.preventDefault();
+
+      contextMenu.show(e.pageX, e.pageY);
+    });
   }
 
   parent = itemsGallery;
@@ -21,14 +30,6 @@ class Item {
     li.appendChild(this.element);
 
     this.parent.appendChild(li);
-
-    this.element.addEventListener("click", (e) => e.preventDefault());
-
-    this.element.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-
-      contextMenu.show(e.clientX, e.clientY);
-    });
   }
 
   show() {
@@ -37,6 +38,10 @@ class Item {
 
   hide() {
     this.element.parentElement.classList.add("hidden");
+  }
+
+  on(eventType, listener) {
+    this.element.addEventListener(eventType, listener);
   }
 }
 
