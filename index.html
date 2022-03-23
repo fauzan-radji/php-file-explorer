@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/colors.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/context-menu.css" />
     <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="css/slider.css" />
     <link rel="stylesheet" href="css/video.css" />
@@ -31,40 +32,46 @@
     <main>
       <section class="action">
         <span class="info" id="info-span"></span>
-        <input type="text" class="filter" placeholder="filter" />
+        <input
+          type="text"
+          id="filter-input"
+          class="filter"
+          placeholder="filter"
+        />
       </section>
 
-      <ul class="children gallery">
-        <li>
-          <a href="#" class="icon icon-directory">..</a>
-        </li>
-        <li>
-          <a href="#" class="icon icon-directory">css</a>
-        </li>
-        <li>
-          <a href="#" class="icon icon-php">file.php</a>
-        </li>
-        <li>
-          <a href="#" class="icon icon-text">file.txt</a>
-        </li>
-        <li>
-          <a href="#" class="icon icon-text no-wrap"
-            >file with a really really long long name without space.txt</a
-          >
-        </li>
-      </ul>
+      <ul class="children gallery" id="items-gallery"></ul>
     </main>
 
-    <div id="image-modal" class="modal">
+    <div id="image-modal" class="modal image-modal">
       <div class="modal__box">
         <div class="modal__head">
-          <h4 class="modal__title no-wrap">
+          <h4
+            class="modal__title no-wrap"
+            title="
+            file with a really really long long name without space.jpg"
+          >
             file with a really really long long name without space.jpg
           </h4>
           <button class="modal__close">&times;</button>
         </div>
         <div class="modal__content">
-          <img src="img/img.jpg" alt="filename.jpg" />
+          <div class="img" style="background-image: url('img/img.jpg')"></div>
+          <!-- <img src="img/img.jpg" alt="filename.jpg" /> -->
+          <div class="actions-section">
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="fullscreen"
+            >
+              <img src="icons/full-screen.png" class="button__icon" />
+            </button>
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="download"
+            >
+              <img src="icons/download.png" class="button__icon" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -72,11 +79,16 @@
     <div id="video-modal" class="modal">
       <div class="modal__box">
         <div class="modal__head">
-          <h4 class="modal__title no-wrap">
+          <h4
+            class="modal__title no-wrap"
+            title="
+            file with a really really long long name without space.mp4"
+          >
             file with a really really long long name without space.mp4
           </h4>
           <button class="modal__close">&times;</button>
         </div>
+
         <div class="modal__content">
           <div class="video-container" id="video-player">
             <main>
@@ -139,6 +151,10 @@
 
                     <button class="settings-button icon-button">
                       <img src="icons/settings.png" class="button__icon" />
+                    </button>
+
+                    <button class="settings-button icon-button">
+                      <img src="icons/download.png" class="button__icon" />
                     </button>
                   </div>
                 </div>
@@ -242,27 +258,67 @@
       </div>
     </div>
 
-    <div id="textarea-modal" class="modal modal--show">
-      <div class="modal__box">
+    <div id="textarea-modal" class="modal">
+      <div class="modal__box" id="mydiv">
         <div class="modal__head">
-          <h4 class="modal__title no-wrap">
+          <h4
+            class="modal__title no-wrap"
+            title="
+            file with a really really long long name without space.txt"
+          >
             file with a really really long long name without space.txt
           </h4>
           <button class="modal__close">&times;</button>
         </div>
+
         <div class="modal__content">
           <textarea placeholder="Nothings here" spellcheck="false"></textarea>
           <div class="actions-section">
-            <button class="btn btn-secondary">Reset</button>
-            <button class="btn">Save</button>
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="reset"
+            >
+              <img src="icons/recurring-appointment.png" class="button__icon" />
+            </button>
+
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="download"
+            >
+              <img src="icons/download.png" class="button__icon" />
+            </button>
+
+            <button
+              class="btn btn--small-padding btn--small icon-button"
+              title="save"
+            >
+              <img src="icons/save.png" class="button__icon" />
+            </button>
           </div>
         </div>
       </div>
     </div>
 
+    <ul id="context-menu" class="context-menu">
+      <li>
+        <a href="#">Download</a>
+      </li>
+      <li>
+        <a href="#">Delete</a>
+      </li>
+      <li>
+        <a href="#">Copy</a>
+      </li>
+      <li>
+        <a href="#">Open in terminal</a>
+      </li>
+    </ul>
+
     <script src="js/video.js"></script>
-    <!-- <script src="js/ajax.js"></script>
-    <script src="js/elements.js"></script> -->
+    <script src="js/modal.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/elements.js"></script>
+    <script src="js/explorer.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

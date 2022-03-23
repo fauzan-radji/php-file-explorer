@@ -3,11 +3,13 @@
   --white: #cde;
   --dark-white: #bcd;
   --light-white: #def;
+  --white-alpha: #bcd;
 
   --black: #234;
   --dark-black: #123;
   --light-black: #345;
   --black-alpha: #123a;
+  --light-black-alpha: #345a;
 
   --blue: #39f;
   --dark-blue: #147;

@@ -6,3 +6,6 @@ const downloadButton = document.getElementById("download-btn");
 const textContentForm = document.getElementById("text-content-form");
 const textContentInput = document.getElementById("text-content");
 const pathInputHidden = document.getElementById("path-hidden");
+
+const itemsGallery = document.getElementById("items-gallery");
+const filterInput = document.getElementById("filter-input");

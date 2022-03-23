@@ -3,21 +3,21 @@
   height: 100%;
   object-fit: contain;
   position: relative;
-  border: 1px solid var(--blue);
+  background-color: var(--dark-black);
 }
 
-.video-container .icon-button {
+.icon-button {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  width: 40px;
-  height: 40px;
-  padding: 10px;
+  width: 2.5em;
+  height: 2.5em;
+  padding: 0.6em;
   border-radius: 20%;
 }
 
-.video-container .button__icon {
+.button__icon {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -34,7 +34,7 @@
 .video-container main {
   top: 0;
   left: 0;
-  bottom: 30px;
+  bottom: 28px;
   width: 100%;
   z-index: 1;
 }
@@ -66,7 +66,7 @@
 }
 
 .video-container .glass {
-  background-color: var(--black-alpha);
+  background-color: var(--light-black-alpha);
   backdrop-filter: blur(10px);
 }
 

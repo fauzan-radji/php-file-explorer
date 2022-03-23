@@ -1,0 +1,38 @@
+.context-menu {
+  list-style: none;
+  font-size: 0.8em;
+  position: absolute;
+
+  background-color: var(--light-black-alpha);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--light-black);
+  border-radius: 0.5em;
+  overflow: hidden;
+
+  pointer-events: none;
+  opacity: 0;
+  display: none;
+}
+
+.context-menu--show {
+  pointer-events: auto;
+  opacity: 1;
+  display: block;
+}
+
+.context-menu li a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  color: var(--white);
+  border-bottom: 1px solid var(--light-black);
+}
+
+.context-menu li:last-child a {
+  border-bottom: none;
+}
+
+.context-menu li a:hover {
+  background-color: var(--black-alpha);
+}

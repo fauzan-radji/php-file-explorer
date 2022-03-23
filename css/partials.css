@@ -22,14 +22,26 @@ input {
   text-decoration: none;
 }
 
-.btn-secondary {
+.btn--secondary {
   background-color: transparent;
-  border: 1px solid var(--blue);
+  border: 1px solid var(--dark-white);
 }
 
-.btn-disabled {
+.btn--danger {
+  background-color: var(--red);
+}
+
+.btn--disabled {
   pointer-events: none;
   opacity: 0.2;
+}
+
+.btn--small-padding {
+  padding: 0.5em;
+}
+
+.btn--small {
+  font-size: 0.8em;
 }
 
 textarea {

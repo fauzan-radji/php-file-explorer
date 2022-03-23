@@ -1,6 +1,36 @@
 const PROCESS_URL = location.href + "/process.php";
 const videoPlayer = new VideoPlayer("video-player");
 
+const modal = {
+  video: new Modal("video-modal"),
+  textarea: new Modal("textarea-modal"),
+  image: new Modal("image-modal"),
+};
+
+const contextMenu = new ContextMenu("context-menu");
+
+const items = [
+  new Item("directory", "..", contextMenu),
+  new Item("directory", "css", contextMenu),
+  new Item("php", "file.php", contextMenu),
+  new Item("text", "file.txt", contextMenu),
+  new Item(
+    "text",
+    "file with a really really long long name without space.txt",
+    contextMenu
+  ),
+];
+
+filterInput.addEventListener("input", () => {
+  items.forEach((item) => {
+    if (!item.name.includes(filterInput.value)) {
+      item.hide();
+    } else {
+      item.show();
+    }
+  });
+});
+
 // pathForm.addEventListener("submit", async (e) => {
 //   e.preventDefault();
 //   // Send Request and Update Text Content
