@@ -69,6 +69,3 @@ function sendFile($filepath) {
   readfile($filepath);
   exit;
 }
-
-
-sendFile(zip('d:\photoshop','test.zip'));

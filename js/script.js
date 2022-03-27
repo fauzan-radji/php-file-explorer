@@ -76,6 +76,9 @@ pathForm.addEventListener("submit", (e) => {
   sendRequest(path).then(updateItems).catch(alert);
 });
 
+// initial call
+sendRequest(pathInput.value).then(updateItems).catch(alert);
+
 function sendRequest(path) {
   return new Promise(async (resolve, reject) => {
     const response = await ajax({
@@ -112,8 +115,12 @@ function updateItems(children) {
     item = new Item(type, name, path);
 
     item.on("dblclick", (e) => {
-      pathInput.value = item.path;
-      sendRequest(item.path).then(updateItems).catch(alert);
+      if (item.type !== "directory") {
+        location.href = item.element.href;
+      } else {
+        pathInput.value = item.path;
+        sendRequest(item.path).then(updateItems).catch(alert);
+      }
     });
 
     items.push(item);

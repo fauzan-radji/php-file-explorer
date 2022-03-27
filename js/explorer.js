@@ -19,7 +19,8 @@ class Item {
 
   build() {
     this.element = document.createElement("a");
-    this.element.href = "#";
+    this.element.href =
+      this.type !== "directory" ? "./download.php?path=" + this.path : "#";
     this.element.classList.add("icon");
     this.element.classList.add("icon-" + this.type);
     this.element.classList.add("no-wrap");
