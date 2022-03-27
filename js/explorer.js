@@ -1,18 +1,7 @@
 class Item {
-  constructor(type, name, path) {
-    this.type = type;
+  constructor(name, path) {
     this.name = name;
     this.path = path;
-
-    this.build();
-
-    this.on("click", (e) => e.preventDefault());
-
-    this.on("contextmenu", (e) => {
-      e.preventDefault();
-
-      contextMenu.show(e.pageX, e.pageY);
-    });
   }
 
   parent = itemsGallery;
@@ -20,7 +9,7 @@ class Item {
   build() {
     this.element = document.createElement("a");
     this.element.href =
-      this.type !== "directory" ? "./download.php?path=" + this.path : "#";
+      this.type === "directory" ? "#" : "./download.php?path=" + this.path;
     this.element.classList.add("icon");
     this.element.classList.add("icon-" + this.type);
     this.element.classList.add("no-wrap");
@@ -31,6 +20,18 @@ class Item {
     li.appendChild(this.element);
 
     this.parent.appendChild(li);
+
+    this.setEventListeners();
+  }
+
+  setEventListeners() {
+    this.on("click", (e) => e.preventDefault());
+
+    this.on("contextmenu", (e) => {
+      e.preventDefault();
+
+      contextMenu.show(e.pageX, e.pageY);
+    });
   }
 
   show() {
@@ -43,6 +44,37 @@ class Item {
 
   on(eventType, listener) {
     this.element.addEventListener(eventType, listener);
+  }
+}
+
+class Directory extends Item {
+  constructor(name, path) {
+    super(name, path);
+    this.type = "directory";
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+
+    this.on("dblclick", () => {
+      pathInput.value = this.path;
+      sendRequest(this.path).then(updateItems).catch(showError);
+    });
+  }
+}
+
+class File_ extends Item {
+  constructor(name, path) {
+    super(name, path);
+    const extension = name.split(".").pop();
+    this.type = extension in iconsName ? iconsName[extension] : "default";
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this.on("dblclick", (e) => {
+      location.href = this.element.href;
+    });
   }
 }
 

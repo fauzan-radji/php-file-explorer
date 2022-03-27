@@ -59,6 +59,9 @@ const items = [
   // ),
 ];
 
+const directories = [];
+const files = [];
+
 filterInput.addEventListener("input", () => {
   items.forEach((item) => {
     if (!item.name.toLowerCase().includes(filterInput.value.toLowerCase())) {
@@ -98,39 +101,31 @@ function sendRequest(path) {
 
 function updateItems(children) {
   itemsGallery.innerHTML = "";
-  items.length = 0;
+  directories.length = 0;
+  files.length = 0;
 
   children.forEach((child) => {
     const { name, path } = child;
-    let item;
-    let type;
 
     if (child.type === "directory") {
-      type = "directory";
+      directories.push(new Directory(name, path));
     } else {
-      const extension = child.extension.toLowerCase();
-
-      type = extension in iconsName ? iconsName[extension] : "default";
+      files.push(new File_(name, path));
     }
+  });
 
-    item = new Item(type, name, path);
+  directories.forEach((directory) => {
+    directory.build();
+  });
 
-    item.on("dblclick", (e) => {
-      if (item.type !== "directory") {
-        location.href = item.element.href;
-      } else {
-        pathInput.value = item.path;
-        sendRequest(item.path).then(updateItems).catch(showError);
-      }
-    });
-
-    items.push(item);
+  files.forEach((file) => {
+    file.build();
   });
 }
 
 function showError(error) {
   errorTextarea.textContent = error;
-  modal.error.title = error;
+  modal.error.title = "Error";
   modal.error.show();
 }
 
