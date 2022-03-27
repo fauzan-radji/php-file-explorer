@@ -22,7 +22,7 @@
           type="text"
           id="path-input"
           placeholder="path to file or folder"
-          value="c:/xampp/htdocs/"
+          value="c:\xampp\htdocs\"
           required
         />
         <button type="submit" class="btn">Fetch</button>
@@ -48,8 +48,7 @@
         <div class="modal__head">
           <h4
             class="modal__title no-wrap"
-            title="
-            file with a really really long long name without space.jpg"
+            title="file with a really really long long name without space.jpg"
           >
             file with a really really long long name without space.jpg
           </h4>
@@ -81,8 +80,7 @@
         <div class="modal__head">
           <h4
             class="modal__title no-wrap"
-            title="
-            file with a really really long long name without space.mp4"
+            title="file with a really really long long name without space.mp4"
           >
             file with a really really long long name without space.mp4
           </h4>
@@ -263,8 +261,7 @@
         <div class="modal__head">
           <h4
             class="modal__title no-wrap"
-            title="
-            file with a really really long long name without space.txt"
+            title="file with a really really long long name without space.txt"
           >
             file with a really really long long name without space.txt
           </h4>
@@ -295,6 +292,19 @@
               <img src="icons/save.png" class="button__icon" />
             </button>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-modal" class="modal">
+      <div class="modal__box" id="mydiv">
+        <div class="modal__head">
+          <h4 class="modal__title no-wrap" title="Error">Error</h4>
+          <button class="modal__close">&times;</button>
+        </div>
+
+        <div class="modal__content">
+          <textarea id="error-textarea" readonly spellcheck="false"></textarea>
         </div>
       </div>
     </div>

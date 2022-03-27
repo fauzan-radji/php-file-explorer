@@ -42,6 +42,7 @@ const modal = {
   video: new Modal("video-modal"),
   textarea: new Modal("textarea-modal"),
   image: new Modal("image-modal"),
+  error: new Modal("error-modal"),
 };
 
 const contextMenu = new ContextMenu("context-menu");
@@ -73,11 +74,11 @@ pathForm.addEventListener("submit", (e) => {
 
   // Send Request and Update Items
   const path = pathInput.value;
-  sendRequest(path).then(updateItems).catch(alert);
+  sendRequest(path).then(updateItems).catch(showError);
 });
 
 // initial call
-sendRequest(pathInput.value).then(updateItems).catch(alert);
+sendRequest(pathInput.value).then(updateItems).catch(showError);
 
 function sendRequest(path) {
   return new Promise(async (resolve, reject) => {
@@ -119,12 +120,18 @@ function updateItems(children) {
         location.href = item.element.href;
       } else {
         pathInput.value = item.path;
-        sendRequest(item.path).then(updateItems).catch(alert);
+        sendRequest(item.path).then(updateItems).catch(showError);
       }
     });
 
     items.push(item);
   });
+}
+
+function showError(error) {
+  errorTextarea.textContent = error;
+  modal.error.title = error;
+  modal.error.show();
 }
 
 // pathForm.addEventListener("submit", async (e) => {

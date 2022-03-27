@@ -48,6 +48,10 @@
   user-select: none;
 }
 
+.modal__title {
+  max-width: calc(100% - 2em);
+}
+
 .modal__close {
   font-size: 1.5em;
   width: 1em;

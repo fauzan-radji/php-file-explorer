@@ -4,6 +4,7 @@ class Modal {
     this.id = id;
     this.closeElements = this.element.querySelectorAll(".modal__close");
     this.headElement = this.element.querySelector(".modal__head");
+    this.titleElement = this.headElement.querySelector(".modal__title");
     this.boxElement = this.element.querySelector(".modal__box");
 
     this.closeElements.forEach((el) =>
@@ -56,51 +57,8 @@ class Modal {
   hide() {
     this.element.classList.remove("modal--show");
   }
+
+  set title(titleText) {
+    this.titleElement.textContent = titleText;
+  }
 }
-
-// Make the DIV element draggable:
-// dragElement(document.getElementById("mydiv"));
-
-// function dragElement(elmnt) {
-//   var left = 0,
-//     top = 0,
-//     pos3 = 0,
-//     pos4 = 0;
-//   if (document.getElementById(elmnt.id + "header")) {
-//     // if present, the header is where you move the DIV from:
-//     document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-//   } else {
-//     // otherwise, move the DIV from anywhere inside the DIV:
-//     elmnt.onmousedown = dragMouseDown;
-//   }
-
-//   function dragMouseDown(e) {
-//     e = e || window.event;
-//     e.preventDefault();
-//     // get the mouse cursor position at startup:
-//     pos3 = e.clientX;
-//     pos4 = e.clientY;
-//     document.onmouseup = closeDragElement;
-//     // call a function whenever the cursor moves:
-//     document.onmousemove = elementDrag;
-//   }
-
-//   function elementDrag(e) {
-//     e = e || window.event;
-//     e.preventDefault();
-//     // calculate the new cursor position:
-//     left = pos3 - e.clientX;
-//     top = pos4 - e.clientY;
-//     pos3 = e.clientX;
-//     pos4 = e.clientY;
-//     // set the element's new position:
-//     elmnt.style.top = elmnt.offsetTop - top + "px";
-//     elmnt.style.left = elmnt.offsetLeft - left + "px";
-//   }
-
-//   function closeDragElement() {
-//     // stop moving when mouse button is released:
-//     document.onmouseup = null;
-//     document.onmousemove = null;
-//   }
-// }

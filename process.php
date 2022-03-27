@@ -22,8 +22,8 @@ if (isset($_GET['path'])) {
     $response['children'] = [];
     $children = scandir($path);
     foreach($children as $child) {
-      if (!str_ends_with($path, '/')) {
-        $path .= '/';
+      if (!str_ends_with($path, '\\')) {
+        $path .= '\\';
       }
 
       if($child == '..') {
@@ -39,7 +39,7 @@ if (isset($_GET['path'])) {
         $extension = "";
       } else {
         $type = "file";
-        $extension = pathinfo($child,PATHINFO_EXTENSION);
+        $extension = pathinfo($child, PATHINFO_EXTENSION);
       }
 
       $response['children'][] = [
