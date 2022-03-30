@@ -18,7 +18,7 @@ class Modal {
       this.ismousedown = true;
     });
 
-    this.element.addEventListener("mouseup", (e) => {
+    this.on("mouseup", (e) => {
       if (this.ismousedown) {
         this.ismousedown = false;
 
@@ -27,7 +27,7 @@ class Modal {
       }
     });
 
-    this.element.addEventListener("mousemove", (e) => {
+    this.on("mousemove", (e) => {
       if (this.ismousedown) {
         const deltaX = e.clientX - this.mouseStart.x;
         const deltaY = e.clientY - this.mouseStart.y;
@@ -58,7 +58,17 @@ class Modal {
     this.element.classList.remove("modal--show");
   }
 
+  on(eventType, listener) {
+    this.element.addEventListener(eventType, listener);
+  }
+
+  // Setter
   set title(titleText) {
     this.titleElement.textContent = titleText;
+  }
+
+  // Getter
+  get title() {
+    return this.titleElement.textContent;
   }
 }

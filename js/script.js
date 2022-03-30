@@ -6,6 +6,7 @@ const iconsName = {
   jpg: "image",
   jpeg: "image",
   png: "image",
+  webp: "image",
 
   mp4: "video",
   mkv: "video",
@@ -47,23 +48,11 @@ const modal = {
 
 const contextMenu = new ContextMenu("context-menu");
 
-const items = [
-  // new Item("directory", "..", contextMenu),
-  // new Item("directory", "css", contextMenu),
-  // new Item("php", "file.php", contextMenu),
-  // new Item("text", "file.txt", contextMenu),
-  // new Item(
-  //   "text",
-  //   "file with a really really long long name without space.txt",
-  //   contextMenu
-  // ),
-];
-
 const directories = [];
 const files = [];
 
 filterInput.addEventListener("input", () => {
-  items.forEach((item) => {
+  [...directories, ...files].forEach((item) => {
     if (!item.name.toLowerCase().includes(filterInput.value.toLowerCase())) {
       item.hide();
     } else {
@@ -116,10 +105,23 @@ function updateItems(children) {
 
   directories.forEach((directory) => {
     directory.build();
+    directory.on("dblclick", async () => {
+      await sendRequest(directory.path).then(updateItems).catch(showError);
+      pathInput.value = decodeURI(directory.path);
+    });
   });
 
   files.forEach((file) => {
     file.build();
+    file.on("dblclick", () => {
+      if (file.type === "image") {
+        imageModalImg.style.backgroundImage = `url('${file.element.href}')`;
+        modal.image.title = file.name;
+        modal.image.show();
+      } else {
+        location.href = file.element.href;
+      }
+    });
   });
 }
 

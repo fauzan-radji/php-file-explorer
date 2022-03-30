@@ -9,3 +9,5 @@ const pathInputHidden = document.getElementById("path-hidden");
 
 const itemsGallery = document.getElementById("items-gallery");
 const filterInput = document.getElementById("filter-input");
+
+const imageModalImg = document.getElementById("img");

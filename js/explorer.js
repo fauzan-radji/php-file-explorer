@@ -1,7 +1,7 @@
 class Item {
   constructor(name, path) {
     this.name = name;
-    this.path = path;
+    this.path = encodeURI(path);
   }
 
   parent = itemsGallery;
@@ -11,7 +11,9 @@ class Item {
     this.element.href =
       this.type === "directory" ? "#" : "./download.php?path=" + this.path;
     this.element.classList.add("icon");
-    this.element.classList.add("icon-" + this.type);
+    this.type === "image"
+      ? (this.element.style.backgroundImage = `url(${this.element.href})`)
+      : this.element.classList.add("icon-" + this.type);
     this.element.classList.add("no-wrap");
     this.element.title = this.name;
     this.element.textContent = this.name;
@@ -52,29 +54,13 @@ class Directory extends Item {
     super(name, path);
     this.type = "directory";
   }
-
-  setEventListeners() {
-    super.setEventListeners();
-
-    this.on("dblclick", () => {
-      pathInput.value = this.path;
-      sendRequest(this.path).then(updateItems).catch(showError);
-    });
-  }
 }
 
 class File_ extends Item {
   constructor(name, path) {
     super(name, path);
-    const extension = name.split(".").pop();
-    this.type = extension in iconsName ? iconsName[extension] : "default";
-  }
-
-  setEventListeners() {
-    super.setEventListeners();
-    this.on("dblclick", (e) => {
-      location.href = this.element.href;
-    });
+    const extension = name.split(".").pop().toLowerCase();
+    this.type = iconsName[extension] || "default";
   }
 }
 
