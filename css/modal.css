@@ -12,6 +12,15 @@
   opacity: 0;
 }
 
+.image-modal .img {
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--dark-black);
+}
+
 .modal--show {
   pointer-events: auto;
   opacity: 1;
@@ -79,4 +88,11 @@
   gap: 1em;
   align-items: end;
   justify-content: flex-end;
+}
+
+.modal .actions-section {
+  display: flex;
+  gap: 1em;
+  padding: 1em;
+  padding-top: 0;
 }

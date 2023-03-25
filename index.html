@@ -75,7 +75,6 @@
               background-image: url('http://localhost/explore/download.php?path=d:%5cimages%5cBsodwindows10.png');
             "
           ></div>
-          <!-- <img src="img/img.jpg" alt="filename.jpg" /> -->
           <div class="actions-section">
             <button
               class="btn btn--secondary btn--small-padding btn--small icon-button"
@@ -327,6 +326,277 @@
         </div>
       </div>
     </div>
+
+    <!-- <div id="image-modal" class="modal image-modal">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h4
+            class="modal__title no-wrap"
+            title="file with a really really long long name without space.jpg"
+          >
+            file with a really really long long name without space.jpg
+          </h4>
+          <button class="modal__close">&times;</button>
+        </div>
+        <div class="modal__content">
+          <div
+            id="img"
+            class="img"
+            style="
+              background-image: url('http://localhost/explore/download.php?path=d:%5cimages%5cBsodwindows10.png');
+            "
+          ></div>
+          <div class="actions-section">
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="fullscreen"
+            >
+              <img src="icons/full-screen.png" class="button__icon" />
+            </button>
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="download"
+            >
+              <img src="icons/download.png" class="button__icon" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="video-modal" class="modal">
+      <div class="modal__box">
+        <div class="modal__head">
+          <h4
+            class="modal__title no-wrap"
+            title="file with a really really long long name without space.mp4"
+          >
+            file with a really really long long name without space.mp4
+          </h4>
+          <button class="modal__close">&times;</button>
+        </div>
+
+        <div class="modal__content">
+          <div class="video-container" id="video-player">
+            <main>
+              <video src="video/sample.mp4" id="video"></video>
+            </main>
+
+            <div class="overlay footer-overlay">
+              <footer class="glass">
+                <div class="time">
+                  <span class="current-time">00:00:00</span>
+
+                  <span class="duration">00:20:08</span>
+                </div>
+
+                <div class="progress-bar">
+                  <div class="filled"></div>
+                </div>
+
+                <div class="buttons">
+                  <div class="left">
+                    <input
+                      type="range"
+                      name="volume-slider"
+                      class="volume-slider"
+                      min="0"
+                      max="1"
+                      step="0.001"
+                      value="1"
+                    />
+
+                    <button type="button" class="mute-button icon-button">
+                      <img src="icons/high-volume.png" class="button__icon" />
+                    </button>
+                  </div>
+
+                  <div class="center">
+                    <button
+                      class="seeker-button backward-button icon-button"
+                      data-seek="-10"
+                    >
+                      <img src="icons/double-left.png" class="button__icon" />
+                    </button>
+
+                    <button class="play-button icon-button">
+                      <img src="icons/play.png" class="button__icon" />
+                    </button>
+
+                    <button
+                      class="seeker-button forward-button icon-button"
+                      data-seek="30"
+                    >
+                      <img src="icons/double-right.png" class="button__icon" />
+                    </button>
+                  </div>
+
+                  <div class="right">
+                    <button class="fullscreen-button icon-button">
+                      <img src="icons/full-screen.png" class="button__icon" />
+                    </button>
+
+                    <button class="settings-button icon-button">
+                      <img src="icons/settings.png" class="button__icon" />
+                    </button>
+
+                    <button class="settings-button icon-button">
+                      <img src="icons/download.png" class="button__icon" />
+                    </button>
+                  </div>
+                </div>
+              </footer>
+            </div>
+
+            <div class="settings-popup popup glass hidden">
+              <ul>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_025"
+                    value="0.25"
+                    data-rate="0.25"
+                  />
+                  <label for="_025">0.25x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_050"
+                    value="0.5"
+                    data-rate="0.5"
+                  />
+                  <label for="_050">0.5x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_075"
+                    value="0.75"
+                    data-rate="0.75"
+                  />
+                  <label for="_075">0.75x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_100"
+                    value="1"
+                    data-rate="1"
+                    checked
+                  /><label for="_100">1x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_125"
+                    value="1.25"
+                    data-rate="1.25"
+                  />
+                  <label for="_125">1.25x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_150"
+                    value="1.5"
+                    data-rate="1.5"
+                  />
+                  <label for="_150">1.5x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_175"
+                    value="1.75"
+                    data-rate="1.75"
+                  />
+                  <label for="_175">1.75x</label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="playback-rate"
+                    class="playback-rate"
+                    id="_200"
+                    value="2"
+                    data-rate="2"
+                  />
+                  <label for="_200">2x</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="textarea-modal" class="modal">
+      <div class="modal__box" id="mydiv">
+        <div class="modal__head">
+          <h4
+            class="modal__title no-wrap"
+            title="file with a really really long long name without space.txt"
+          >
+            file with a really really long long name without space.txt
+          </h4>
+          <button class="modal__close">&times;</button>
+        </div>
+
+        <div class="modal__content">
+          <textarea placeholder="Nothings here" spellcheck="false"></textarea>
+          <div class="actions-section">
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="reset"
+            >
+              <img src="icons/recurring-appointment.png" class="button__icon" />
+            </button>
+
+            <button
+              class="btn btn--secondary btn--small-padding btn--small icon-button"
+              title="download"
+            >
+              <img src="icons/download.png" class="button__icon" />
+            </button>
+
+            <button
+              class="btn btn--small-padding btn--small icon-button"
+              title="save"
+            >
+              <img src="icons/save.png" class="button__icon" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-modal" class="modal">
+      <div class="modal__box" id="mydiv">
+        <div class="modal__head">
+          <h4 class="modal__title no-wrap" title="Error">Error</h4>
+          <button class="modal__close">&times;</button>
+        </div>
+
+        <div class="modal__content">
+          <textarea id="error-textarea" readonly spellcheck="false"></textarea>
+        </div>
+      </div>
+    </div> -->
 
     <ul id="context-menu" class="context-menu">
       <li>
